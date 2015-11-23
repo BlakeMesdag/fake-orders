@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+echo "Setting up docker-machine env with 2 CPUs, 20GiB disk, and 2GiB memory"
+if ! (docker-machine ls | grep dev 2>&1 > /dev/null) ; then
+  docker-machine create --driver vmwarefusion \
+    --vmwarefusion-cpu-count=2 \
+    --vwmarefusion-memory-size=2048 \
+    --vmwarefusion-disk-size=20480 \
+    dev
+else
+  echo "  Machine already exists, skipping."
+fi
+
+echo "Copying Dockerfile.sample to Dockerfile"
+cp Dockerfile.sample Dockerfile
