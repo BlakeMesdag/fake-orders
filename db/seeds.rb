@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+def create_order
+  order = Order.new
+  order.shipping_address = Address.new
+  order.billing_address = Address.new
+  order.line_items = [LineItem.new, LineItem.new, LineItem.new]
+  order.save!
+end
+
+1.times do
+  create_order
+end
