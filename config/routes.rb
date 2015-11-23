@@ -1,27 +1,11 @@
 Rails.application.routes.draw do
-  get 'customers/index'
+  resources :customers do
+    get :search
+  end
 
-  get 'customers/show'
-
-  get 'customers/search'
-
-  get 'orders/index'
-
-  get 'orders/show'
-
-  get 'orders/search'
-
-  get 'customers_controller/index'
-
-  get 'customers_controller/show'
-
-  get 'customers_controller/search'
-
-  get 'orders_controller/index'
-
-  get 'orders_controller/show'
-
-  get 'orders_controller/search'
+  resources :orders do
+    get :search
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -26,6 +26,9 @@ def create_order
 
   populate_order_line_items(order)
 
+  order.customer.first_name = order.shipping_address.first_name
+  order.customer.last_name = order.shipping_address.last_name
+
   order.save!
 end
 
